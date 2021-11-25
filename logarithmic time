@@ -1,0 +1,35 @@
+def fibo_logn(n):
+
+    def dot_product(matrix1, matrix2):
+        x = (matrix1[0][0] * matrix2[0][0] +
+             matrix1[0][1] * matrix2[1][0])
+        y = (matrix1[0][0] * matrix2[0][1] +
+             matrix1[0][1] * matrix2[1][1])
+        z = (matrix1[1][0] * matrix2[0][0] +
+             matrix1[1][1] * matrix2[1][0])
+        w = (matrix1[1][0] * matrix2[0][1] +
+             matrix1[1][1] * matrix2[1][1])
+        matrix1[0][0] = x
+        matrix1[0][1] = y
+        matrix1[1][0] = z
+        matrix1[1][1] = w
+
+    def power(matrix1, n):
+        if n == 0 or n == 1:
+            return
+        temp = [[1, 1],
+                [1, 0]]
+        power(matrix1, n // 2)
+        dot_product(matrix1, matrix1)
+
+        if n % 2 != 0:
+            dot_product(matrix1, temp)
+
+    matrix = [[1, 1],
+              [1, 0]]
+    if n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    power(matrix, n - 2)
+    return matrix[0][0] + matrix[1][0]
