@@ -33,3 +33,5 @@ def fibo_logn(n):
         return 1
     power(matrix, n - 2)
     return matrix[0][0] + matrix[1][0]
+
+#runs in O(logN)
