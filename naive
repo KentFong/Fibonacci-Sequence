@@ -5,3 +5,5 @@ def fibo_naive(n):
         return 1
     else:
         return fibo_naive(n-1) + fibo_naive(n-2)
+
+#runs in O(n^2)
